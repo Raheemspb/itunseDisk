@@ -13,6 +13,11 @@
 		AABDE17A2C3C12AE001779CF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AABDE1792C3C12AE001779CF /* Base */; };
 		AABDE17C2C3C12AF001779CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABDE17B2C3C12AF001779CF /* Assets.xcassets */; };
 		AABDE17F2C3C12AF001779CF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AABDE17E2C3C12AF001779CF /* Base */; };
+		AABDE1882C3C131F001779CF /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = AABDE1872C3C131F001779CF /* Disk */; };
+		AABDE18A2C3C1333001779CF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABDE1892C3C1333001779CF /* NetworkManager.swift */; };
+		AABDE18C2C3C133C001779CF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABDE18B2C3C133C001779CF /* TableViewCell.swift */; };
+		AAE559482C3C1702003DA4B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAE559472C3C1702003DA4B3 /* SnapKit */; };
+		AAE5594A2C3C1702003DA4B3 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AAE559492C3C1702003DA4B3 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,8 @@
 		AABDE17B2C3C12AF001779CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AABDE17E2C3C12AF001779CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AABDE1802C3C12AF001779CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AABDE1892C3C1333001779CF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AABDE18B2C3C133C001779CF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABDE1882C3C131F001779CF /* Disk in Frameworks */,
+				AAE559482C3C1702003DA4B3 /* SnapKit in Frameworks */,
+				AAE5594A2C3C1702003DA4B3 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +69,8 @@
 				AABDE1722C3C12AE001779CF /* AppDelegate.swift */,
 				AABDE1742C3C12AE001779CF /* SceneDelegate.swift */,
 				AABDE1762C3C12AE001779CF /* ViewController.swift */,
+				AABDE1892C3C1333001779CF /* NetworkManager.swift */,
+				AABDE18B2C3C133C001779CF /* TableViewCell.swift */,
 				AABDE1782C3C12AE001779CF /* Main.storyboard */,
 				AABDE17B2C3C12AF001779CF /* Assets.xcassets */,
 				AABDE17D2C3C12AF001779CF /* LaunchScreen.storyboard */,
@@ -83,6 +95,11 @@
 			dependencies = (
 			);
 			name = ItunseDisk;
+			packageProductDependencies = (
+				AABDE1872C3C131F001779CF /* Disk */,
+				AAE559472C3C1702003DA4B3 /* SnapKit */,
+				AAE559492C3C1702003DA4B3 /* SnapKit-Dynamic */,
+			);
 			productName = ItunseDisk;
 			productReference = AABDE16F2C3C12AE001779CF /* ItunseDisk.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,10 @@
 				Base,
 			);
 			mainGroup = AABDE1662C3C12AE001779CF;
+			packageReferences = (
+				AABDE1862C3C131F001779CF /* XCRemoteSwiftPackageReference "Disk" */,
+				AAE559462C3C1702003DA4B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = AABDE1702C3C12AE001779CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABDE18C2C3C133C001779CF /* TableViewCell.swift in Sources */,
+				AABDE18A2C3C1333001779CF /* NetworkManager.swift in Sources */,
 				AABDE1772C3C12AE001779CF /* ViewController.swift in Sources */,
 				AABDE1732C3C12AE001779CF /* AppDelegate.swift in Sources */,
 				AABDE1752C3C12AE001779CF /* SceneDelegate.swift in Sources */,
@@ -363,6 +386,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AABDE1862C3C131F001779CF /* XCRemoteSwiftPackageReference "Disk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/saoudrizwan/Disk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
+		AAE559462C3C1702003DA4B3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AABDE1872C3C131F001779CF /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABDE1862C3C131F001779CF /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
+		AAE559472C3C1702003DA4B3 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAE559462C3C1702003DA4B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AAE559492C3C1702003DA4B3 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAE559462C3C1702003DA4B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AABDE1672C3C12AE001779CF /* Project object */;
 }
