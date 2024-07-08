@@ -11,11 +11,20 @@ import SnapKit
 final class ViewController: UIViewController {
 
     var tableView: UITableView!
+    let networkManager = NetworkManager()
+    var albums = [Album]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        print("LL")
+
+        networkManager.getCharacter { [weak self] albums in
+            self?.albums = albums
+
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     private func setupTableView() {
@@ -37,13 +46,13 @@ final class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = "This \(indexPath)"
+        cell.textLabel?.text = albums[indexPath.row].collectionName
         return cell
     }
     
