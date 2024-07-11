@@ -1,0 +1,84 @@
+//
+//  CollectionViewCell.swift
+//  ItunseDisk
+//
+//  Created by Рахим Габибли on 11.07.2024.
+//
+
+import UIKit
+
+class CollectionViewCell: UICollectionViewCell {
+    static let reuseId = "CollectionViewCell"
+
+    var albumImage: UIImageView = {
+        let image = UIImageView()
+        image.layer.cornerRadius = 30
+        image.clipsToBounds = true
+        image.contentMode = .scaleToFill
+
+        return image
+    }()
+
+    var albumLabel: UILabel = {
+        let label = UILabel()
+
+        return label
+    }()
+
+    var singerLabel: UILabel = {
+        let label = UILabel()
+
+        return label
+    }()
+
+    var trackCountLabel: UILabel = {
+        let label = UILabel()
+
+        return label
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(albumImage)
+        contentView.addSubview(albumLabel)
+        contentView.addSubview(singerLabel)
+        contentView.addSubview(trackCountLabel)
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupConstraints() {
+        albumImage.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(10)
+            make.centerY.equalToSuperview()
+            make.height.width.equalTo(60)
+        }
+
+        albumLabel.snp.makeConstraints { make in
+            make.leading.equalTo(albumImage.snp.trailing).inset(-10)
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().inset(10)
+        }
+
+        singerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(albumLabel)
+            make.bottom.equalToSuperview().inset(10)
+        }
+
+        trackCountLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+
+    override func prepareForReuse() {
+        albumImage.image = nil
+        albumLabel.text = nil
+        singerLabel.text = nil
+        trackCountLabel.text = nil
+    }
+
+}

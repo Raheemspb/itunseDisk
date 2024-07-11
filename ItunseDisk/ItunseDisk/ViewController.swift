@@ -10,56 +10,95 @@ import SnapKit
 
 final class ViewController: UIViewController {
 
-    var tableView: UITableView!
+    var collectionView: UICollectionView!
+    var searchBar: UISearchBar!
     let networkManager = NetworkManager()
     var albums = [Album]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-
+        setupCollectionView()
         networkManager.getCharacter { [weak self] albums in
             self?.albums = albums
 
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
     }
 
-    private func setupTableView() {
-        tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 90
+    private func setupSearchBar() {
+         searchBar = {
+            let bar = UISearchBar()
+            bar.backgroundColor = UIColor.init(red: 245/255, green: 245/255, blue: 247/255, alpha: 1)
+            bar.placeholder = "Введите номер или имя"
+            bar.searchBarStyle = .minimal
 
-        tableView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            return bar
+        }()
+    }
+
+    private func setupCollectionView() {
+        collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: collectionViewFlowlayout()
+        )
+        view.addSubview(collectionView)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.reuseId)
+
+        collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
+            make.top.bottom.equalToSuperview()
         }
 
     }
 
+    private func collectionViewFlowlayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = .init(width: 380, height: 80)
+
+        return layout
+    }
+
+
 }
 
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         albums.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseId, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
 
-        cell.textLabel?.text = albums[indexPath.row].collectionName
+        let album = albums[indexPath.item]
+        guard let imageUrl = URL(string: album.artworkUrl100) else { return cell }
+
+        DispatchQueue.global(qos: .utility).async {
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+
+            DispatchQueue.main.async {
+                guard let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell else { return }
+
+                cell.albumLabel.text = album.collectionName
+                cell.singerLabel.text = album.artistName
+                cell.albumImage.image = UIImage(data: imageData)
+                cell.trackCountLabel.text = "\(album.trackCount) tracks"
+            }
+        }
         return cell
+
     }
+    
+
     
 
 }
 
-extension ViewController: UITableViewDelegate {
+extension ViewController: UICollectionViewDelegate {
 
 }
 
