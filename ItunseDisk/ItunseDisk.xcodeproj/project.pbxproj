@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0492292C411A9700CD5971 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0492282C411A9700CD5971 /* SearchHistoryViewController.swift */; };
+		AA04922B2C411B9D00CD5971 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA04922A2C411B9D00CD5971 /* AlbumDetailsViewController.swift */; };
 		AABDE1732C3C12AE001779CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABDE1722C3C12AE001779CF /* AppDelegate.swift */; };
 		AABDE1752C3C12AE001779CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABDE1742C3C12AE001779CF /* SceneDelegate.swift */; };
 		AABDE1772C3C12AE001779CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABDE1762C3C12AE001779CF /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA0492282C411A9700CD5971 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
+		AA04922A2C411B9D00CD5971 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		AABDE16F2C3C12AE001779CF /* ItunseDisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunseDisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDE1722C3C12AE001779CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AABDE1742C3C12AE001779CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,10 +74,12 @@
 			children = (
 				AABDE1722C3C12AE001779CF /* AppDelegate.swift */,
 				AABDE1742C3C12AE001779CF /* SceneDelegate.swift */,
-				AAE5594D2C408532003DA4B3 /* TabBarController.swift */,
 				AABDE1762C3C12AE001779CF /* ViewController.swift */,
 				AAE5594B2C40521F003DA4B3 /* CollectionViewCell.swift */,
 				AABDE1892C3C1333001779CF /* NetworkManager.swift */,
+				AAE5594D2C408532003DA4B3 /* TabBarController.swift */,
+				AA04922A2C411B9D00CD5971 /* AlbumDetailsViewController.swift */,
+				AA0492282C411A9700CD5971 /* SearchHistoryViewController.swift */,
 				AABDE1782C3C12AE001779CF /* Main.storyboard */,
 				AABDE17B2C3C12AF001779CF /* Assets.xcassets */,
 				AABDE17D2C3C12AF001779CF /* LaunchScreen.storyboard */,
@@ -163,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE5594C2C40521F003DA4B3 /* CollectionViewCell.swift in Sources */,
+				AA0492292C411A9700CD5971 /* SearchHistoryViewController.swift in Sources */,
+				AA04922B2C411B9D00CD5971 /* AlbumDetailsViewController.swift in Sources */,
 				AABDE18A2C3C1333001779CF /* NetworkManager.swift in Sources */,
 				AABDE1772C3C12AE001779CF /* ViewController.swift in Sources */,
 				AAE5594E2C408532003DA4B3 /* TabBarController.swift in Sources */,

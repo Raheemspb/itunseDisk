@@ -11,12 +11,12 @@ import SnapKit
 final class ViewController: UIViewController {
 
     var collectionView: UICollectionView!
-    var searchBar: UISearchBar!
     let networkManager = NetworkManager()
     var albums = [Album]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        setupSearchBar()
         setupCollectionView()
         networkManager.getCharacter { [weak self] albums in
             self?.albums = albums
@@ -25,17 +25,6 @@ final class ViewController: UIViewController {
                 self?.collectionView.reloadData()
             }
         }
-    }
-
-    private func setupSearchBar() {
-         searchBar = {
-            let bar = UISearchBar()
-            bar.backgroundColor = UIColor.init(red: 245/255, green: 245/255, blue: 247/255, alpha: 1)
-            bar.placeholder = "Введите номер или имя"
-            bar.searchBarStyle = .minimal
-
-            return bar
-        }()
     }
 
     private func setupCollectionView() {
@@ -62,7 +51,6 @@ final class ViewController: UIViewController {
 
         return layout
     }
-
 
 }
 
@@ -92,13 +80,9 @@ extension ViewController: UICollectionViewDataSource {
         return cell
 
     }
-    
-
-    
 
 }
 
 extension ViewController: UICollectionViewDelegate {
 
 }
-
