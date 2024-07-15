@@ -10,6 +10,7 @@ import SnapKit
 
 final class ViewController: UIViewController {
 
+    var searchBar = UISearchBar()
     var collectionView: UICollectionView!
     let networkManager = NetworkManager()
     var albums = [Album]()
@@ -17,14 +18,21 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        networkManager.getCharacter { [weak self] albums in
-            self?.albums = albums
-
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-        }
+        setupSearchBar()
+//        networkManager.getCharacter(albumName: "Oxxxymiron") { [weak self] albums in
+//            self?.albums = albums
+//
+//            DispatchQueue.main.async {
+//                self?.collectionView.reloadData()
+//            }
+//        }
     }
+
+    private func setupSearchBar() {
+        searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        }
 
     private func setupCollectionView() {
         collectionView = UICollectionView(
@@ -40,7 +48,6 @@ final class ViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.top.bottom.equalToSuperview()
         }
-
     }
 
     private func collectionViewFlowlayout() -> UICollectionViewFlowLayout {
@@ -95,3 +102,35 @@ extension ViewController: UICollectionViewDelegate {
 
     }
 }
+
+
+extension ViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText != "" {
+//            networkManager.getCharacter(albumName: searchText) { [weak self] albums in
+//                            self?.albums = albums
+//                
+//                            DispatchQueue.main.async {
+//                                self?.collectionView.reloadData()
+//                            }
+//            }
+//        }
+//    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return
+        }
+
+        networkManager.getCharacter(albumName: searchText) { [weak self] albums in
+            self?.albums = albums
+
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+
+        searchBar.resignFirstResponder()
+    }
+}
+

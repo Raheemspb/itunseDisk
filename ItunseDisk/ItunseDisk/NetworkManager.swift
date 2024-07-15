@@ -19,9 +19,18 @@ struct Album: Codable {
 }
 
 class NetworkManager {
-    let urlString = "https://itunes.apple.com/search?term=Alex&media=music&entity=album"
 
-    func getCharacter(completionHandler: @escaping ([Album]) -> Void) {
+    static let shared = NetworkManager()
+//    var urlString = "https://itunes.apple.com/search?term=Alex&media=music&entity=album"
+
+    func fetchAlbum(albumName: String) -> String {
+       let url = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
+        return url
+   }
+
+    func getCharacter(albumName: String, completionHandler: @escaping ([Album]) -> Void) {
+
+        let urlString = fetchAlbum(albumName: albumName)
         guard let url = URL(string: urlString) else {
             print("Error")
             return
@@ -47,4 +56,5 @@ class NetworkManager {
             }
         }.resume()
     }
+
 }

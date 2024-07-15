@@ -11,11 +11,13 @@ import UIKit
 class TabBarController: UITabBarController {
 
     var searchBar = UISearchBar()
+    let networkManager = NetworkManager()
+    var albums = [Album]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupSearchBar()
+//        setupSearchBar()
         setupViewControllers()
     }
 
@@ -51,11 +53,21 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // Обновление результатов поиска на основе текста в панели поиска
-        filterContentForSearchText(searchText)
+//        // Обновление результатов поиска на основе текста в панели поиска
+//        filterContentForSearchText(searchText)
+//        if searchText != "" {
+//            networkManager.getCharacter(albumName: searchText) { [weak self] albums in
+//                            self?.albums = albums
+//
+//                            DispatchQueue.main.async {
+//                                self?.collectionView.reloadData()
+//                            }
+//            }
+//        }
     }
 
     func filterContentForSearchText(_ searchText: String) {
         // Реализуйте вашу логику фильтрации здесь
     }
 }
+
