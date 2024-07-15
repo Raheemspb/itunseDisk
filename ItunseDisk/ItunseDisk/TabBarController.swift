@@ -29,6 +29,7 @@ class TabBarController: UITabBarController {
 
 
     func setupViewControllers() {
+
         viewControllers = [
             generateViewControllers(
             viewController: ViewController(),
@@ -52,19 +53,7 @@ class TabBarController: UITabBarController {
 }
 
 extension TabBarController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        // Обновление результатов поиска на основе текста в панели поиска
-//        filterContentForSearchText(searchText)
-//        if searchText != "" {
-//            networkManager.getCharacter(albumName: searchText) { [weak self] albums in
-//                            self?.albums = albums
-//
-//                            DispatchQueue.main.async {
-//                                self?.collectionView.reloadData()
-//                            }
-//            }
-//        }
-    }
+
 
     func filterContentForSearchText(_ searchText: String) {
         // Реализуйте вашу логику фильтрации здесь

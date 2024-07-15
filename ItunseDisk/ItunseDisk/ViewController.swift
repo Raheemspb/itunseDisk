@@ -13,6 +13,7 @@ final class ViewController: UIViewController {
     var searchBar = UISearchBar()
     var collectionView: UICollectionView!
     let networkManager = NetworkManager()
+    let searchHistoryViewController = SearchHistoryViewController()
     var albums = [Album]()
 
     override func viewDidLoad() {
@@ -105,22 +106,14 @@ extension ViewController: UICollectionViewDelegate {
 
 
 extension ViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText != "" {
-//            networkManager.getCharacter(albumName: searchText) { [weak self] albums in
-//                            self?.albums = albums
-//                
-//                            DispatchQueue.main.async {
-//                                self?.collectionView.reloadData()
-//                            }
-//            }
-//        }
-//    }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             return
         }
+
+        searchHistoryViewController.searchHistory.append(searchText)
+        print(searchHistoryViewController.searchHistory.count)
 
         networkManager.getCharacter(albumName: searchText) { [weak self] albums in
             self?.albums = albums

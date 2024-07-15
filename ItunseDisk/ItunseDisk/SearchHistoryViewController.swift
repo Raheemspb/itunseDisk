@@ -10,6 +10,7 @@ import UIKit
 class SearchHistoryViewController: UIViewController {
 
     let identifire = "searchCell"
+    var searchHistory = [String]()
 
     var tableView: UITableView!
     override func viewDidLoad() {
@@ -33,12 +34,12 @@ class SearchHistoryViewController: UIViewController {
 
 extension SearchHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        searchHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifire, for: indexPath)
-        cell.textLabel?.text = "\(indexPath)"
+        cell.textLabel?.text = searchHistory[indexPath.row]
         return cell
     }
     
