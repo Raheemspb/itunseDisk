@@ -9,9 +9,38 @@ import UIKit
 
 class SearchHistoryViewController: UIViewController {
 
+    let identifire = "searchCell"
+
+    var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
+        setup()
     }
+
+    private func setup() {
+        tableView = UITableView(frame: .zero, style: .plain)
+        view.addSubview(tableView)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifire)
+        tableView.dataSource = self
+
+        tableView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+        }
+    }
+
+}
+
+extension SearchHistoryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifire, for: indexPath)
+        cell.textLabel?.text = "\(indexPath)"
+        return cell
+    }
+    
 
 }

@@ -14,7 +14,6 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Albums"
         view.backgroundColor = .white
         setupSearchBar()
         setupViewControllers()
@@ -28,8 +27,16 @@ class TabBarController: UITabBarController {
 
 
     func setupViewControllers() {
-        viewControllers = [generateViewControllers(viewController: ViewController(), image: UIImage(systemName: "magnifyingglass"), title: "Search"),
-                           generateViewControllers(viewController: SearchHistoryViewController(), image: UIImage(systemName: "clock"), title: "History")
+        viewControllers = [
+            generateViewControllers(
+            viewController: ViewController(),
+            image: UIImage(systemName: "magnifyingglass"),
+            title: "Search"),
+            generateViewControllers(
+                viewController: SearchHistoryViewController(),
+                image: UIImage(systemName: "clock"),
+                title: "History"
+            )
         ]
     }
 

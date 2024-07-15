@@ -16,7 +16,6 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupSearchBar()
         setupCollectionView()
         networkManager.getCharacter { [weak self] albums in
             self?.albums = albums
@@ -76,6 +75,7 @@ extension ViewController: UICollectionViewDataSource {
                 cell.albumImage.image = UIImage(data: imageData)
                 cell.trackCountLabel.text = "\(album.trackCount) tracks"
             }
+
         }
         return cell
 
@@ -85,4 +85,13 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let albumDetailsViewController = AlbumDetailsViewController()
+        let album = albums[indexPath.item]
+        albumDetailsViewController.album = album
+        albumDetailsViewController.title = album.artistName
+
+        navigationController?.pushViewController(albumDetailsViewController, animated: false)
+
+    }
 }
