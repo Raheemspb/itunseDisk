@@ -22,6 +22,8 @@ class SearchHistoryViewController: UIViewController {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifire)
         tableView.dataSource = self
+        tableView.delegate = self
+        title = "Search history"
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -42,6 +44,8 @@ extension SearchHistoryViewController: UITableViewDataSource {
         cell.textLabel?.text = searchHistory[indexPath.row]
         return cell
     }
-    
+}
+
+extension SearchHistoryViewController: UITableViewDelegate {
 
 }

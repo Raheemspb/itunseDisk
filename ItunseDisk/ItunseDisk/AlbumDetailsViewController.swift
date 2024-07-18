@@ -27,7 +27,6 @@ class AlbumDetailsViewController: UIViewController {
         view.addSubview(tracksStackView)
         view.backgroundColor = .white
         tracksStackView.backgroundColor = .cyan
-        albumImage.backgroundColor = .red
         albumImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(15)
@@ -55,8 +54,6 @@ class AlbumDetailsViewController: UIViewController {
         tracksStackView.axis = .vertical
         tracksStackView.alignment = .leading
         tracksStackView.spacing = 3
-
-
     }
 
     private func setModel() {

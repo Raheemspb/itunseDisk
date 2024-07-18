@@ -21,19 +21,20 @@ class CollectionViewCell: UICollectionViewCell {
 
     var albumLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
 
         return label
     }()
 
     var singerLabel: UILabel = {
         let label = UILabel()
-
+        label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
 
     var trackCountLabel: UILabel = {
         let label = UILabel()
-
+        label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
 
@@ -59,16 +60,18 @@ class CollectionViewCell: UICollectionViewCell {
 
         albumLabel.snp.makeConstraints { make in
             make.leading.equalTo(albumImage.snp.trailing).inset(-10)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(10)
             make.top.equalToSuperview().inset(10)
         }
 
         singerLabel.snp.makeConstraints { make in
             make.leading.equalTo(albumLabel)
+            make.trailing.equalToSuperview().inset(70)
             make.bottom.equalToSuperview().inset(10)
         }
 
         trackCountLabel.snp.makeConstraints { make in
+            make.leading.equalTo(singerLabel.snp.trailing).inset(-5)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
