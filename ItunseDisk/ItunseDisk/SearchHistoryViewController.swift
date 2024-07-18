@@ -12,20 +12,20 @@ class SearchHistoryViewController: UIViewController {
     let identifire = "searchCell"
     var searchHistory = [String]()
 
-    var tableView: UITableView!
+    var tableView = UITableView(frame: .zero, style: .plain)
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
 
     private func setup() {
-        tableView = UITableView(frame: .zero, style: .plain)
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifire)
         tableView.dataSource = self
 
         tableView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
     }

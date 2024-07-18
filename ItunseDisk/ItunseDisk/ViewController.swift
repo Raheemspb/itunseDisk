@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        setupSearchBar()
+//        setupSearchBar()
 //        networkManager.getCharacter(albumName: "Oxxxymiron") { [weak self] albums in
 //            self?.albums = albums
 //
@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
 
     private func setupSearchBar() {
         searchBar.placeholder = "Search"
-        searchBar.delegate = self
+//        searchBar.delegate = self
         navigationItem.titleView = searchBar
         }
 
@@ -105,25 +105,25 @@ extension ViewController: UICollectionViewDelegate {
 }
 
 
-extension ViewController: UISearchBarDelegate {
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text, !searchText.isEmpty else {
-            return
-        }
-
-        searchHistoryViewController.searchHistory.append(searchText)
-        print(searchHistoryViewController.searchHistory.count)
-
-        networkManager.getCharacter(albumName: searchText) { [weak self] albums in
-            self?.albums = albums
-
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-        }
-
-        searchBar.resignFirstResponder()
-    }
-}
+//extension ViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        guard let searchText = searchBar.text, !searchText.isEmpty else {
+//            return
+//        }
+//
+//        searchHistoryViewController.searchHistory.append(searchText)
+//        print(searchHistoryViewController.searchHistory.count)
+//
+//        networkManager.getCharacter(albumName: searchText) { [weak self] albums in
+//            self?.albums = albums
+//
+//            DispatchQueue.main.async {
+//                self?.collectionView.reloadData()
+//            }
+//        }
+//
+//        searchBar.resignFirstResponder()
+//    }
+//}
 
