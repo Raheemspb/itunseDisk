@@ -5,7 +5,6 @@
 //  Created by Рахим Габибли on 12.07.2024.
 //
 
-import Foundation
 import UIKit
 
 class TabBarController: UITabBarController {
@@ -37,13 +36,18 @@ class TabBarController: UITabBarController {
 
     private func setupViewControllers() {
         let searchNavController = UINavigationController(rootViewController: viewController)
-        searchNavController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        searchNavController.tabBarItem = UITabBarItem(
+            title: "Search",
+            image: UIImage(
+                systemName: "magnifyingglass"
+            ),
+            tag: 0
+        )
 
         let historyNavController = UINavigationController(rootViewController: searchHistoryViewController)
         historyNavController.tabBarItem = UITabBarItem(title: "History", image: UIImage(systemName: "clock"), tag: 1)
 
         viewControllers = [searchNavController, historyNavController]
-
     }
 
     func performInitialSearch(with searchText: String) {
@@ -51,7 +55,6 @@ class TabBarController: UITabBarController {
        searchBarSearchButtonClicked(searchBar)
    }
 }
-
 
 extension TabBarController: UISearchBarDelegate {
 

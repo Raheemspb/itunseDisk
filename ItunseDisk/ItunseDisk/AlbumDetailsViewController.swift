@@ -36,6 +36,7 @@ class AlbumDetailsViewController: UIViewController {
         artistName.snp.makeConstraints { make in
             make.top.equalTo(albumImage)
             make.leading.equalTo(albumImage.snp.trailing).inset(-20)
+            make.trailing.equalToSuperview().inset(10)
         }
 
         trackCount.snp.makeConstraints { make in
@@ -71,18 +72,4 @@ class AlbumDetailsViewController: UIViewController {
             }
         }
     }
-
-//    func confiqure(indexPath: IndexPath) {
-//        guard let imageUrl = URL(string: viewController.albums[indexPath.item].artworkUrl100) else { return }
-//        DispatchQueue.global().async {
-//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-//
-//            DispatchQueue.main.async {
-//                self.albumImage.image = UIImage(data: imageData)
-//            }
-//        }
-//
-//    }
-
-
 }

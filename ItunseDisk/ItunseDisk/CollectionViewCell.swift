@@ -46,7 +46,7 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.addSubview(trackCountLabel)
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

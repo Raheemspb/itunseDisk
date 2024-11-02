@@ -19,19 +19,10 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-//        setupSearchBar()
-//        networkManager.getCharacter(albumName: "Oxxxymiron") { [weak self] albums in
-//            self?.albums = albums
-//
-//            DispatchQueue.main.async {
-//                self?.collectionView.reloadData()
-//            }
-//        }
     }
 
     private func setupSearchBar() {
         searchBar.placeholder = "Search"
-//        searchBar.delegate = self
         navigationItem.titleView = searchBar
         }
 
@@ -65,9 +56,18 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         albums.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseId, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CollectionViewCell.reuseId,
+            for: indexPath
+        ) as? CollectionViewCell else {
+            return UICollectionViewCell()
+        }
 
         let album = albums[indexPath.item]
         guard let imageUrl = URL(string: album.artworkUrl100) else { return cell }
@@ -83,12 +83,9 @@ extension ViewController: UICollectionViewDataSource {
                 cell.albumImage.image = UIImage(data: imageData)
                 cell.trackCountLabel.text = "\(album.trackCount) tracks"
             }
-
         }
         return cell
-
     }
-
 }
 
 extension ViewController: UICollectionViewDelegate {
@@ -103,27 +100,3 @@ extension ViewController: UICollectionViewDelegate {
 
     }
 }
-
-
-//extension ViewController: UISearchBarDelegate {
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        guard let searchText = searchBar.text, !searchText.isEmpty else {
-//            return
-//        }
-//
-//        searchHistoryViewController.searchHistory.append(searchText)
-//        print(searchHistoryViewController.searchHistory.count)
-//
-//        networkManager.getCharacter(albumName: searchText) { [weak self] albums in
-//            self?.albums = albums
-//
-//            DispatchQueue.main.async {
-//                self?.collectionView.reloadData()
-//            }
-//        }
-//
-//        searchBar.resignFirstResponder()
-//    }
-//}
-

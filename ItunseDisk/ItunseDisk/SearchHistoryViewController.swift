@@ -31,14 +31,13 @@ class SearchHistoryViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
     }
-
 }
 
 extension SearchHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         searchHistory.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifire, for: indexPath)
         cell.textLabel?.text = searchHistory[indexPath.row]
